@@ -1,0 +1,15 @@
+---
+layout: article.njk
+title: "Браты, якія служаць у Беларусі"
+permalink: /braty-kapucyny/braty-jakija-sluzhac-u-belarusi/
+back_link: false
+---
+<ul class="people-list">
+  {% for brat in braty %}
+  <li{% if brat.role %} class="featured"{% endif %}>{{ brat.name }}{% if brat.role %} — {{ brat.role }}{% endif %}</li>
+  {% endfor %}
+</ul>
+
+<div style="margin-top:36px;">
+  <a href="/" class="btn-outline">← Галоўная</a>
+</div>

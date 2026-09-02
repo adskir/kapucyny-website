@@ -1,0 +1,66 @@
+---
+layout: base.njk
+title: "Кантакты"
+permalink: /kantakty/
+---
+<section class="page-hero">
+  <h1>Кантакты</h1>
+  <div class="breadcrumb">Звяжыцеся з намі</div>
+</section>
+
+<section>
+  <div class="article">
+    <h2>{{ settings.curia.name }}</h2>
+    <p>Адрас: {{ settings.curia.address }}</p>
+    <p>Тэлефон: <a href="tel:{{ settings.curia.phone }}">{{ settings.curia.phone }}</a></p>
+    <p>E-mail: <a href="mailto:{{ settings.curia.email }}">{{ settings.curia.email }}</a></p>
+
+    {% for loc in collections.lokacyi %}
+    <h3>{{ loc.data.title }}</h3>
+    <p>
+      {% if loc.data.address %}{{ loc.data.address }}<br>{% endif %}
+      {% if loc.data.correspondence_address %}Для карэспандэнцыі: {{ loc.data.correspondence_address }}<br>{% endif %}
+      {% if loc.data.phone %}Тэл.: <a href="tel:{{ loc.data.phone }}">{{ loc.data.phone }}</a><br>{% endif %}
+      {% if loc.data.email %}E-mail: <a href="mailto:{{ loc.data.email }}">{{ loc.data.email }}</a>{% endif %}
+    </p>
+    {% endfor %}
+  </div>
+</section>
+
+<section style="background: var(--cream);">
+  <div class="container-narrow">
+    <h2 class="section-title reveal">Напішыце нам</h2>
+    <div class="gold-divider reveal"></div>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="reveal">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none;"><label>Не запаўняйце гэта поле: <input name="bot-field"></label></p>
+      <div class="field">
+        <label>Імя *</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="field">
+        <label>E-mail *</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="field">
+        <label>Паведамленне *</label>
+        <textarea name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn">Адправіць</button>
+    </form>
+  </div>
+</section>
+
+<section style="background: var(--cream); padding-top: 0;">
+  <div class="container">
+    <div class="map-embed reveal">
+      {% if settings.curia.map_embed_url %}
+      <iframe src="{{ settings.curia.map_embed_url }}" loading="lazy" allowfullscreen></iframe>
+      {% else %}
+      <div style="height:320px; display:flex; align-items:center; justify-content:center; background:var(--cream-light); border:1px solid #a0522d22; color:var(--text-mid); font-size:14px;">
+        Карта будзе дададзена (устаў embed-спасылку Google Maps у settings)
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

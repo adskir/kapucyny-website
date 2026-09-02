@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <div class="breadcrumb">{{ date | dateBy }}</div>
+  <h1>{{ title }}</h1>
+</section>
+<section>
+  <div class="article">
+    {{ content | safe }}
+    <div style="margin-top:36px;">
+      <a href="/" class="btn-outline">← Галоўная</a>
+    </div>
+  </div>
+</section>

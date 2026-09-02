@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: "Навіны"
+permalink: /naviny/
+---
+<section class="page-hero">
+  <h1>Навіны Кустодыі</h1>
+</section>
+<section>
+  <div class="container">
+    <div class="news-grid">
+      {% for post in collections.novosti %}
+      <a href="{{ post.url }}" class="news-card reveal">
+        <span class="news-date">{{ post.data.date | dateBy }}</span>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <div style="margin-top:36px;">
+      <a href="/" class="btn-outline">← Галоўная</a>
+    </div>
+  </div>
+</section>

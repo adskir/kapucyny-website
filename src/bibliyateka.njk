@@ -1,0 +1,50 @@
+---
+layout: base.njk
+title: "Бібліятэка"
+permalink: /bibliyateka/
+---
+<section class="page-hero">
+  <h1>Бібліятэка</h1>
+</section>
+<section>
+  <div class="article">
+    <p style="margin-bottom:40px;">Бібліятэка капуцынаў — гэта збор духоўных, тэалагічных і гістарычных матэрыялаў, звязаных з францішканскай традыцыяй і дзейнасцю ордэна капуцынаў у Беларусі.</p>
+
+    <div class="lib-group">
+      <h2>Творы святога Францішка Асізскага</h2>
+      <ul>
+        {% for doc in collections.bibliyateka %}
+          {% if doc.data.category == "tvory-francishka" %}
+          <li><a href="{{ doc.url }}">{{ doc.data.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="lib-group">
+      <h2>Творы і дакументы святога Францішка</h2>
+      <ul>
+        {% for doc in collections.bibliyateka %}
+          {% if doc.data.category == "tvory-dakumenty" %}
+          <li><a href="{{ doc.url }}">{{ doc.data.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="lib-group">
+      <h2>Публікацыі пра капуцынаў у Беларусі</h2>
+      <ul>
+        {% for doc in collections.bibliyateka %}
+          {% if doc.data.category == "publikacyi" %}
+          <li><a href="{{ doc.url }}">{{ doc.data.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div style="margin-top:12px;">
+      <a href="/" class="btn-outline">← Галоўная</a>
+    </div>
+  </div>
+</section>

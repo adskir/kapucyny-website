@@ -1,0 +1,29 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <h1>{{ title }}</h1>
+  <div class="breadcrumb"><a href="/byc-kapucynam/" style="color:inherit;">Быць капуцынам</a></div>
+</section>
+
+<section>
+  <div class="article">
+    {{ content | safe }}
+
+    <div class="steps-list">
+      {% for s in steps %}
+      <div class="step reveal">
+        <div class="step-num">{{ s.numeral }}</div>
+        <div class="step-body">
+          <div class="step-title">{{ s.title }}</div>
+          <p class="step-desc">{{ s.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div style="margin-top:36px;">
+      <a href="/" class="btn-outline">← Галоўная</a>
+    </div>
+  </div>
+</section>

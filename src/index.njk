@@ -1,0 +1,115 @@
+---
+layout: base.njk
+title: "Галоўная"
+permalink: /
+eleventyExcludeFromCollections: true
+---
+<section class="hero">
+  <div class="hero-badge reveal">Ордэн Меншых Братоў Капуцынаў</div>
+  <h1 class="reveal">Капуцыны ў Беларусі</h1>
+  <p class="hero-sub reveal">Афіцыйная старонка Беларускай Кустодыі Ордэна Меншых Братоў Капуцынаў</p>
+  <a href="/braty-kapucyny/" class="btn reveal">Пра ордэн</a>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-label reveal">Даведайцеся болей пра наш ордэн і яго гісторыю</span>
+    <h2 class="section-title reveal">Хто мы</h2>
+    <div class="gold-divider reveal"></div>
+
+    <div class="card-grid">
+      <a href="/svyaty-francishak/" class="teaser-card reveal">
+        <img src="/images/uploads/svyaty-francishak.jpg" alt="Святы Францішак">
+        <div class="body">
+          <h3>Святы Францішак</h3>
+          <p>Францішак з Асізі (1181–1226), заснавальнік нашага Ордэна — адзін з найвялікшых хрысціянскіх святых.</p>
+          <span class="more">Чытаць далей →</span>
+        </div>
+      </a>
+      <a href="/braty-kapucyny/" class="teaser-card reveal">
+        <img src="/images/uploads/braty-kapucyny.jpg" alt="Браты Капуцыны">
+        <div class="body">
+          <h3>Браты Капуцыны</h3>
+          <p>Манаская супольнасць капуцынаў з'яўляецца прамой пераймальніцай духоўнасці святога Францішка.</p>
+          <span class="more">Чытаць далей →</span>
+        </div>
+      </a>
+      <a href="/prysutnasc-kapucynau/" class="teaser-card reveal">
+        <img src="/images/uploads/kapucyny-у-belarusi.jpg" alt="Капуцыны ў Беларусі">
+        <div class="body">
+          <h3>Капуцыны ў Беларусі</h3>
+          <p>На тэрыторыі сучаснай Беларусі меншыя браты капуцыны дзейнічаюць з 1938 года.</p>
+          <span class="more">Чытаць далей →</span>
+        </div>
+      </a>
+      <a href="/byc-kapucynam/" class="teaser-card reveal">
+        <img src="/images/uploads/byc-kapucynam.jpg" alt="Быць капуцынам">
+        <div class="body">
+          <h3>Быць капуцынам</h3>
+          <p>Кожнага, хто прагне крочыць шляхам святога Францішка, мы ўспрымаем як члена адной вялікай сям'і.</p>
+          <span class="more">Чытаць далей →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--cream);">
+  <div class="container">
+    <span class="section-label reveal">Апошнія падзеі і абнаўленні</span>
+    <h2 class="section-title reveal">Навіны Кустодыі</h2>
+    <div class="gold-divider reveal"></div>
+
+    <div class="news-grid">
+      {% for post in collections.novosti | limit(3) %}
+      <a href="{{ post.url }}" class="news-card reveal">
+        <span class="news-date">{{ post.data.date | dateBy }}</span>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.excerpt }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="/naviny/" class="btn reveal">Усе навіны</a>
+    </div>
+  </div>
+</section>
+
+<section class="locations-band">
+  <div class="container">
+    <span class="section-label reveal">Браты капуцыны жывуць і працуюць у сямі гарадах</span>
+    <h2 class="section-title reveal">Нашы супольнасці</h2>
+    <div class="gold-divider reveal" style="margin-left:auto; margin-right:auto;"></div>
+    <div class="loc-pills">
+      {% for loc in collections.lokacyi %}
+      <a class="loc-pill reveal" href="{{ loc.url }}">{{ loc.data.title }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-label reveal">Звяжыцеся з намі</span>
+    <h2 class="section-title reveal">Кантакты</h2>
+    <div class="gold-divider reveal"></div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3 style="font-family:var(--font-display); font-size:16px; color:var(--brown-deep); margin-bottom:16px;">{{ settings.curia.name }}</h3>
+        <div class="contact-item"><span class="icon">📍</span><span>{{ settings.curia.address }}</span></div>
+        <div class="contact-item"><span class="icon">📞</span><a href="tel:{{ settings.curia.phone }}">{{ settings.curia.phone }}</a></div>
+        <div class="contact-item"><span class="icon">✉️</span><a href="mailto:{{ settings.curia.email }}">{{ settings.curia.email }}</a></div>
+      </div>
+      <div class="map-embed reveal">
+        {% if settings.curia.map_embed_url %}
+        <iframe src="{{ settings.curia.map_embed_url }}" loading="lazy" allowfullscreen></iframe>
+        {% else %}
+        <div style="height:320px; display:flex; align-items:center; justify-content:center; background:var(--cream); border:1px solid #a0522d22; color:var(--text-mid); font-size:14px; text-align:center; padding:20px;">
+          Карта будзе дададзена (устаў embed-спасылку Google Maps у settings)
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

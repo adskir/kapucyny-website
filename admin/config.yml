@@ -1,0 +1,187 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+locale: "ru"
+
+collections:
+  # ── НАЛАДЫ САЙТА (singleton) ──
+  - name: "settings"
+    label: "Наладкі сайта"
+    files:
+      - name: "general"
+        label: "Кантакты і сацсеткі"
+        file: "src/_data/settings.yml"
+        fields:
+          - { label: "Назва сайта", name: "site_title", widget: "string" }
+          - { label: "Тэглайн", name: "site_tagline", widget: "string" }
+          - label: "Курыя (галоўныя кантакты)"
+            name: "curia"
+            widget: "object"
+            fields:
+              - { label: "Назва", name: "name", widget: "string" }
+              - { label: "Адрас", name: "address", widget: "string" }
+              - { label: "Тэлефон", name: "phone", widget: "string" }
+              - { label: "E-mail", name: "email", widget: "string" }
+              - { label: "Google Maps embed URL", name: "map_embed_url", widget: "string", required: false, hint: "Устаў iframe src з Google Maps" }
+          - { label: "Спасылка WhatsApp-групы", name: "whatsapp_url", widget: "string", required: false }
+          - { label: "Facebook", name: "facebook_url", widget: "string", required: false }
+          - { label: "YouTube", name: "youtube_url", widget: "string", required: false }
+          - { label: "Уключыць пажертвы", name: "donate_enabled", widget: "boolean", default: false }
+          - { label: "Спасылка на пажертвы", name: "donate_url", widget: "string", required: false }
+          - { label: "Тэкст у футэры (копірайт)", name: "footer_copyright", widget: "string" }
+
+  # ── БРАТЫ, ЯКІЯ СЛУЖАЦЬ У БЕЛАРУСІ ──
+  - name: "braty"
+    label: "Браты ў Беларусі"
+    files:
+      - name: "spis"
+        label: "Спіс братоў"
+        file: "src/_data/braty.yml"
+        fields:
+          - name: "braty"
+            label: "Браты"
+            widget: "list"
+            fields:
+              - { label: "Імя", name: "name", widget: "string" }
+              - { label: "Пасада (напрыклад, кустош)", name: "role", widget: "string", required: false }
+
+  # ── ЛАКАЦЫІ (Прысутнасць капуцынаў) ──
+  - name: "lokacyi"
+    label: "Лакацыі (Прысутнасць капуцынаў)"
+    folder: "src/lokacyi"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Назва горада", name: "title", widget: "string" }
+      - { label: "Парадак у меню", name: "order", widget: "number", default: 1 }
+      - { label: "Фота", name: "image", widget: "image", required: false }
+      - { label: "Тэкст", name: "body", widget: "markdown" }
+      - { label: "Адрас", name: "address", widget: "string", required: false }
+      - { label: "Адрас для карэспандэнцыі", name: "correspondence_address", widget: "string", required: false }
+      - { label: "Тэлефон", name: "phone", widget: "string", required: false }
+      - { label: "E-mail", name: "email", widget: "string", required: false }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Сайт прыхода", name: "website", widget: "string", required: false }
+      - label: "Расклад набажэнстваў"
+        name: "services"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Дзень/дні", name: "label", widget: "string" }
+          - { label: "Час", name: "time", widget: "string" }
+      - { label: "URL старонкі", name: "permalink", widget: "string", hint: "Напрыклад /minsk/" }
+
+  # ── НАВІНЫ ──
+  - name: "novosti"
+    label: "Навіны"
+    folder: "src/novosti"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Загаловак", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Кароткі анонс", name: "excerpt", widget: "text" }
+      - { label: "Тэкст навіны", name: "body", widget: "markdown" }
+      - { label: "URL старонкі", name: "permalink", widget: "string", hint: "Напрыклад /naviny/nazva-navіny/" }
+
+  # ── БІБЛІЯТЭКА ──
+  - name: "bibliyateka"
+    label: "Бібліятэка"
+    folder: "src/bibliyateka"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Загаловак", name: "title", widget: "string" }
+      - label: "Катэгорыя"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Творы святога Францішка", value: "tvory-francishka" }
+          - { label: "Творы і дакументы", value: "tvory-dakumenty" }
+          - { label: "Публікацыі пра капуцынаў у Беларусі", value: "publikacyi" }
+      - { label: "Гэта малітва / кароткі тэкст?", name: "is_prayer", widget: "boolean", default: false, required: false }
+      - { label: "Тэкст дакумента", name: "body", widget: "markdown" }
+      - { label: "URL старонкі", name: "permalink", widget: "string", hint: "Напрыклад /bibliyateka/nazva/" }
+
+  # ── СТАТЫЧНЫЯ СТАРОНКІ ──
+  - name: "pages"
+    label: "Старонкі"
+    files:
+      - name: "svyaty-francishak"
+        label: "Святы Францішак"
+        file: "src/svyaty-francishak.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Фота", name: "image", widget: "image", required: false }
+          - { label: "Тэкст", name: "body", widget: "markdown" }
+
+      - name: "braty-kapucyny"
+        label: "Браты Капуцыны"
+        file: "src/braty-kapucyny.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Фота", name: "image", widget: "image", required: false }
+          - { label: "Тэкст", name: "body", widget: "markdown" }
+
+      - name: "prysutnasc-kapucynau"
+        label: "Прысутнасць капуцынаў"
+        file: "src/prysutnasc-kapucynau.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Фота", name: "image", widget: "image", required: false }
+          - { label: "Тэкст", name: "body", widget: "markdown" }
+
+      - name: "blaslauleny-ganarat"
+        label: "Благаслаўлёны Ганарат Казьмінскі"
+        file: "src/blaslauleny-ganarat-kazminski.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Фота", name: "image", widget: "image", required: false }
+          - { label: "Тэкст", name: "body", widget: "markdown" }
+
+      - name: "byc-kapucynam"
+        label: "Быць капуцынам"
+        file: "src/byc-kapucynam.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Фота", name: "image", widget: "image", required: false }
+          - { label: "Уступны тэкст", name: "body", widget: "markdown" }
+          - label: "Цытаты св. Францішка"
+            name: "quotes"
+            widget: "list"
+            fields:
+              - { label: "Тэма", name: "topic", widget: "string" }
+              - { label: "Цытата", name: "quote", widget: "text" }
+
+      - name: "yak-stac-kapucynam"
+        label: "Як стаць капуцынам"
+        file: "src/yak-stac-kapucynam.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Уступны тэкст", name: "body", widget: "markdown" }
+          - label: "Этапы"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { label: "Нумар (I, II, III...)", name: "numeral", widget: "string" }
+              - { label: "Назва этапу", name: "title", widget: "string" }
+              - { label: "Апісанне", name: "description", widget: "text" }
+
+      - name: "spasylki"
+        label: "Спасылкі"
+        file: "src/spasylki.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Тэкст са спасылкамі", name: "body", widget: "markdown" }
+
+      - name: "galereya"
+        label: "Галерэя (уступ)"
+        file: "src/galereya.md"
+        fields:
+          - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Тэкст", name: "body", widget: "markdown" }

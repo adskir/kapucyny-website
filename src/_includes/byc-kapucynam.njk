@@ -1,0 +1,33 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <h1>{{ title }}</h1>
+</section>
+
+<section>
+  <div class="article">
+    {% if image %}<img src="{{ image }}" alt="{{ title }}">{% endif %}
+    {{ content | safe }}
+  </div>
+</section>
+
+<section style="background: var(--cream); padding-top: 0;">
+  <div class="container-narrow">
+    <h2 class="section-title reveal" style="text-align:center;">Слова святога Францішка пра манаскае жыццё</h2>
+    <div class="gold-divider reveal" style="margin-left:auto; margin-right:auto;"></div>
+    <div class="quote-grid">
+      {% for q in quotes %}
+      <div class="quote-card reveal">
+        <h4>{{ q.topic }}</h4>
+        <p>{{ q.quote }}</p>
+        <cite>— св. Францішак</cite>
+      </div>
+      {% endfor %}
+    </div>
+    <p style="text-align:center;">Калі хочаш даведацца больш — напішы нам на <a href="mailto:{{ settings.curia.email }}">{{ settings.curia.email }}</a> або прыйдзі на сустрэчу ў любую з нашых супольнасцей.</p>
+    <div style="text-align:center; margin-top: 28px;">
+      <a href="/byc-kapucynam/yak-stac-kapucynam/" class="btn">Як стаць капуцынам</a>
+    </div>
+  </div>
+</section>

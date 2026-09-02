@@ -1,0 +1,39 @@
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-col">
+      <h4>Навігацыя</h4>
+      <a href="/svyaty-francishak/">Святы Францішак</a>
+      <a href="/braty-kapucyny/">Браты Капуцыны</a>
+      <a href="/prysutnasc-kapucynau/">Прысутнасць капуцынаў</a>
+      <a href="/byc-kapucynam/">Быць капуцынам</a>
+    </div>
+    <div class="footer-col">
+      <h4>Рэсурсы</h4>
+      <a href="/bibliyateka/">Бібліятэка</a>
+      <a href="/naviny/">Навіны</a>
+      <a href="/galereya/">Галерэя</a>
+      <a href="/spasylki/">Спасылкі</a>
+    </div>
+    <div class="footer-col">
+      <h4>Кантакты</h4>
+      <a href="mailto:{{ settings.curia.email }}">{{ settings.curia.email }}</a>
+      <a href="tel:{{ settings.curia.phone }}">{{ settings.curia.phone }}</a>
+      <span style="display:block; color:#e8d9b8aa; font-size:14px;">{{ settings.curia.address }}</span>
+      <div class="footer-social">
+        {% if settings.facebook_url %}<a href="{{ settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">📘</a>{% endif %}
+        {% if settings.youtube_url %}<a href="{{ settings.youtube_url }}" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>{% endif %}
+        {% if settings.whatsapp_url %}<a href="{{ settings.whatsapp_url }}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>{% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="tau">Τ</span>
+    {{ settings.footer_copyright }} &nbsp;|&nbsp; <a href="mailto:{{ settings.curia.email }}" style="color:inherit;">{{ settings.curia.email }}</a>
+  </div>
+</footer>
+
+{% if settings.whatsapp_url %}
+<a class="wa-float" href="{{ settings.whatsapp_url }}" target="_blank" rel="noopener" aria-label="Далучыцца ў WhatsApp">💬</a>
+{% endif %}
+
+<script src="/js/main.js"></script>

@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <h1>{{ title }}</h1>
+  <div class="breadcrumb"><a href="/bibliyateka/" style="color:inherit;">Бібліятэка</a></div>
+</section>
+<section>
+  <div class="article">
+    {% if is_prayer %}<div class="prayer-block">{% endif %}
+    {{ content | safe }}
+    {% if is_prayer %}</div>{% endif %}
+    <div style="margin-top:36px;">
+      <a href="/bibliyateka/" class="btn-outline">← Бібліятэка</a>
+    </div>
+  </div>
+</section>

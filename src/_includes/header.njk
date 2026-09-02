@@ -1,0 +1,47 @@
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="/" class="brand">
+      <img class="brand-mark" src="/images/logo-white.svg" alt="">
+      <span class="brand-text">
+        <span class="big">Капуцыны</span>
+        <span class="small">Ў БЕЛАРУСІ</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+
+    <ul class="nav-list" id="navList">
+      <li class="nav-item"><a class="nav-link" href="/">Галоўная</a></li>
+      <li class="nav-item"><a class="nav-link" href="/svyaty-francishak/">Святы Францішак</a></li>
+      <li class="nav-item"><a class="nav-link" href="/braty-kapucyny/">Браты Капуцыны</a></li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/prysutnasc-kapucynau/">Прысутнасць капуцынаў</a>
+        <div class="nav-dropdown">
+          {% for loc in collections.lokacyi %}
+            <a href="{{ loc.url }}">{{ loc.data.title }}</a>
+          {% endfor %}
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/byc-kapucynam/">Быць капуцынам</a>
+        <div class="nav-dropdown">
+          <a href="/byc-kapucynam/yak-stac-kapucynam/">Як стаць капуцынам</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/resursy/">Рэсурсы</a>
+        <div class="nav-dropdown">
+          <a href="/bibliyateka/">Бібліятэка</a>
+          <a href="/naviny/">Навіны</a>
+          <a href="/galereya/">Галерэя</a>
+          <a href="/spasylki/">Спасылкі</a>
+        </div>
+      </li>
+
+      <li class="nav-item"><a class="nav-link" href="/kantakty/">Кантакты</a></li>
+    </ul>
+  </div>
+</header>

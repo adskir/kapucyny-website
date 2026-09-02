@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <h1>{{ title }}</h1>
+</section>
+
+<section>
+  <div class="article">
+    {% if image %}<img src="{{ image }}" alt="{{ title }}">{% endif %}
+    {{ content | safe }}
+    {% if back_link != false %}
+    <div style="margin-top:36px;">
+      <a href="/" class="btn-outline">← Галоўная</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
