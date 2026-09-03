@@ -393,7 +393,7 @@ section { padding: 72px 0; }
   text-transform: uppercase;
   color: #c9a84c99;
 }
-.footer-bottom .tau { font-size: 30px; color: var(--gold); display: block; margin-bottom: 12px; opacity: 0.7; }
+.footer-bottom .tau { width: 34px; height: auto; display: block; margin: 0 auto 12px; opacity: 0.75; }
 
 /* ── WHATSAPP FLOAT BUTTON ── */
 .wa-float {
