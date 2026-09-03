@@ -383,6 +383,13 @@ section { padding: 72px 0; }
 .footer-col a:hover { color: var(--gold-light); }
 .footer-social { display: flex; gap: 14px; margin-top: 10px; }
 .footer-social a { font-size: 20px; }
+
+@media (max-width: 640px) {
+  .footer-top { flex-direction: column; gap: 28px; padding: 40px 0 20px; }
+  .footer-col { min-width: 0; text-align: center; }
+  .footer-social { justify-content: center; }
+  .footer-bottom { font-size: 9.5px; line-height: 1.6; padding: 20px 16px; }
+}
 .footer-bottom {
   border-top: 1px solid #c9a84c22;
   text-align: center;
