@@ -4,6 +4,7 @@ title: "Вільнюс"
 order: 6
 image: "/images/uploads/lokacyi/vilnius.jpg"
 address: "Касцёл Святога Барталамея, Užupio g. 17a, Vilnius, Lietuva (раён Ужупіс)"
+residence_address: "Užupio g. 15-9, LT-01202 Vilnius, Lietuva"
 services:
   - label: "Нядзеля"
     time: "10.00, 12.00"
