@@ -437,15 +437,17 @@ section { padding: 72px 0; }
 
 /* ── GALLERY ── */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  columns: 280px 3;
+  column-gap: 20px;
   margin-top: 24px;
+}
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
 }
 .gallery-item picture, .gallery-item img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: 2px;
 }
