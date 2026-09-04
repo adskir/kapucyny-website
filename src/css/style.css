@@ -80,6 +80,8 @@ section { padding: 72px 0; }
   white-space: nowrap;
 }
 .nav-link:hover, .nav-link.active { background: var(--gold); color: var(--brown-deep); }
+.nav-link--parent { cursor: default; }
+.nav-link--parent:hover { background: transparent; color: var(--cream); }
 
 .nav-dropdown {
   display: none;
