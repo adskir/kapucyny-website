@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^4.0.2",
+    "js-yaml": "^4.1.0",
+    "netlify-plugin-cache": "^1.0.3"
   }
 }

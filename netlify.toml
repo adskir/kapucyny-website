@@ -2,6 +2,11 @@
   command = "npx @11ty/eleventy"
   publish = "_site"
 
+[[plugins]]
+  package = "netlify-plugin-cache"
+  [plugins.inputs]
+    paths = [".cache"]
+
 [[headers]]
   for = "/*"
   [headers.values]

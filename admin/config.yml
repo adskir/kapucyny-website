@@ -85,6 +85,7 @@ collections:
     fields:
       - { label: "Загаловак", name: "title", widget: "string" }
       - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Фота", name: "image", widget: "image", required: false }
       - { label: "Кароткі анонс", name: "excerpt", widget: "text" }
       - { label: "Тэкст навіны", name: "body", widget: "markdown" }
       - { label: "URL старонкі", name: "permalink", widget: "string", hint: "Напрыклад /naviny/nazva-navіny/" }
@@ -180,8 +181,15 @@ collections:
           - { label: "Тэкст са спасылкамі", name: "body", widget: "markdown" }
 
       - name: "galereya"
-        label: "Галерэя (уступ)"
+        label: "Галерэя"
         file: "src/galereya.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
           - { label: "Тэкст", name: "body", widget: "markdown" }
+          - label: "Фотаздымкі"
+            name: "photos"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Фота", name: "image", widget: "image" }
+              - { label: "Подпіс (не абавязкова)", name: "caption", widget: "string", required: false }

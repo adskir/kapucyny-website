@@ -1,0 +1,29 @@
+---
+layout: base.njk
+---
+<section class="page-hero">
+  <h1>{{ title }}</h1>
+</section>
+
+<section>
+  <div class="article">
+    {{ content | safe }}
+  </div>
+
+  {% if photos and photos.length %}
+  <div class="container">
+    <div class="gallery-grid">
+      {% for photo in photos %}
+      <div class="gallery-item reveal">
+        {% image photo.image, photo.caption or title, "(min-width: 700px) 380px, 100vw" %}
+        {% if photo.caption %}<p class="gallery-caption">{{ photo.caption }}</p>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="container" style="margin-top:36px;">
+    <a href="/" class="btn-outline">← Галоўная</a>
+  </div>
+</section>
