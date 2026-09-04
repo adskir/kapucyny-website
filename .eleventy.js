@@ -40,8 +40,23 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml, yaml", (contents) => yaml.load(contents));
   eleventyConfig.addAsyncShortcode("image", imageShortcode);
 
-  // Serve the persisted image cache into the build output every run
-  eleventyConfig.addPassthroughCopy({ "./.cache/img": "images/uploads/optimized" });
+  // NOTE: we deliberately do NOT use addPassthroughCopy for ./.cache/img here.
+  // Passthrough copies are captured at the START of the build, but the image
+  // shortcode writes into .cache/img WHILE templates are rendering — so on a
+  // build where a new photo appears for the first time, the copy step runs
+  // before the file exists and the image silently goes missing from _site.
+  // Copying after the whole build (eleventy.after) guarantees every image
+  // generated during this run, old or brand new, actually ends up on the site.
+  eleventyConfig.on("eleventy.after", async ({ dir }) => {
+    const src = "./.cache/img";
+    const dest = path.join(dir.output, "images/uploads/optimized");
+    if (fs.existsSync(src)) {
+      fs.mkdirSync(dest, { recursive: true });
+      for (const file of fs.readdirSync(src)) {
+        fs.copyFileSync(path.join(src, file), path.join(dest, file));
+      }
+    }
+  });
 
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
