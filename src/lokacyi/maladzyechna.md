@@ -5,6 +5,8 @@ order: 2
 image: "/images/uploads/lokacyi/maladzyechna.jpg"
 address: "вул. Вялікі Гасцінец 141, 222307 г. Маладзечна, Мінская вобласць"
 phone: "(8-0176) 54-28-40"
+instagram: "https://www.instagram.com/sv.kasimir_mola"
+website: "https://www.pio.by"
 permalink: /maladzyechna/
 ---
 Супольнасць капуцынаў у Маладзечне дзейнічае ў парафіі Найсвяцейшай Дзевы Марыі Фацімскай. Тут размешчана студыя Радыё Марыя, якая вядзе рэгулярныя эфіры.
