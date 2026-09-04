@@ -3,9 +3,10 @@ layout: lokacyia.njk
 title: "Мінск"
 order: 1
 image: "/images/uploads/lokacyi/minsk.jpg"
-address: "вул. Авіяцыйная 4, в. Копішча, Мінскі раён"
+address: "вул. Авіяцыйная 4, в. Копішча, 220081, Мінскі раён"
 phone: "(8-017) 221-74-08"
 facebook: "https://facebook.com/sv.francishak"
+instagram: "https://www.instagram.com/sv.francishak"
 permalink: /minsk/
 ---
 Парафія святога Францішка Асізскага ў Мінску — галоўная супольнасць капуцынаў у Беларусі. Брацтва дзейнічае ў Копішчы (Новая Баравая) на ўскраіне Мінска.
