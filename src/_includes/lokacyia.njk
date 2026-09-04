@@ -14,10 +14,12 @@ layout: base.njk
 
     <dl class="loc-meta">
       {% if address %}<dt>Адрас</dt><dd>{{ address }}</dd>{% endif %}
+      {% if residence_address %}<dt>Рэзідэнцыя братоў</dt><dd>{{ residence_address }}</dd>{% endif %}
       {% if correspondence_address %}<dt>Для карэспандэнцыі</dt><dd>{{ correspondence_address }}</dd>{% endif %}
       {% if phone %}<dt>Тэлефон</dt><dd><a href="tel:{{ phone }}">{{ phone }}</a></dd>{% endif %}
       {% if email %}<dt>E-mail</dt><dd><a href="mailto:{{ email }}">{{ email }}</a></dd>{% endif %}
       {% if facebook %}<dt>Facebook</dt><dd><a href="{{ facebook }}" target="_blank" rel="noopener">{{ facebook }}</a></dd>{% endif %}
+      {% if instagram %}<dt>Instagram</dt><dd><a href="{{ instagram }}" target="_blank" rel="noopener">{{ instagram }}</a></dd>{% endif %}
       {% if website %}<dt>Сайт прыхода</dt><dd><a href="{{ website }}" target="_blank" rel="noopener">{{ website }}</a></dd>{% endif %}
       {% if services and services.length %}
         <dt>Расклад набажэнстваў</dt>
