@@ -1,7 +1,47 @@
 const yaml = require("js-yaml");
+const eleventyImage = require("@11ty/eleventy-img");
+const fs = require("fs");
+const path = require("path");
+
+async function imageShortcode(src, alt, sizes = "(min-width: 800px) 800px, 100vw") {
+  if (!src) return "";
+  let inputPath = src.startsWith("/") ? "src" + src : src;
+
+  if (!fs.existsSync(inputPath)) {
+    // Photo not uploaded yet — skip silently instead of crashing the whole build
+    console.warn(`[image shortcode] Файл не знойдзены, прапускаю: ${inputPath}`);
+    return "";
+  }
+
+  let metadata = await eleventyImage(inputPath, {
+    widths: [400, 800, 1200, null], // null = original size, capped by the image's real width
+    formats: ["webp", "jpeg"],
+    outputDir: "./.cache/img/",
+    urlPath: "/images/uploads/optimized/",
+    cacheOptions: {
+      duration: "*", // never expire — files are content-hashed, safe to keep forever
+      directory: "./.cache/eleventy-img-cache/",
+    },
+  });
+
+  let imageAttributes = {
+    alt: alt || "",
+    sizes,
+    loading: "lazy",
+    decoding: "async",
+  };
+
+  return eleventyImage.generateHTML(metadata, imageAttributes, {
+    whitespaceMode: "inline",
+  });
+}
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml, yaml", (contents) => yaml.load(contents));
+  eleventyConfig.addAsyncShortcode("image", imageShortcode);
+
+  // Serve the persisted image cache into the build output every run
+  eleventyConfig.addPassthroughCopy({ "./.cache/img": "images/uploads/optimized" });
 
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
