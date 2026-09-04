@@ -3,13 +3,14 @@ site_tagline: "Ордэн Меншых Братоў Капуцынаў"
 
 curia:
   name: "Курыя Кустодыі Ордэна Меншых Братоў Капуцынаў"
-  address: "вул. Авіяцыйная 4, Капішча, Мінская вобласць"
+  address: "вул. Авіяцыйная 4, в. Копішча, 220081, Мінскі раён"
   phone: "(8-017) 221-74-08"
   email: "belarus.ofmcap@gmail.com"
   map_embed_url: "" # TODO: вставить embed-ссылку Google Maps
 
 whatsapp_url: "" # TODO: ссылка-запрашэнне ў WhatsApp-групу
 facebook_url: "https://facebook.com/sv.francishak"
+instagram_url: "https://www.instagram.com/kapucyny_by"
 youtube_url: "https://youtube.com/@kamerton1628"
 
 donate_enabled: false
