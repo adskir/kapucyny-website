@@ -14,7 +14,7 @@ async function imageShortcode(src, alt, sizes = "(min-width: 800px) 800px, 100vw
   }
 
   let metadata = await eleventyImage(inputPath, {
-    widths: [400, 800, 1200, null], // null = original size, capped by the image's real width
+    widths: [400, 800, 1200, 1600], // capped at 1600 — no point shipping multi-MB originals from phone/DSLR photos
     formats: ["webp", "jpeg"],
     outputDir: "./.cache/img/",
     urlPath: "/images/uploads/optimized/",
