@@ -5,7 +5,7 @@ title: Мінск
 order: 1
 image: /images/uploads/minsk-kascel-novy.webp
 address: вул. Авіяцыйная 4, в. Копішча, 220081, Мінскі раён
-phone: (8-017) 221-74-08
+phone: +375 17 396 80 62
 permalink: /minsk/
 instagram: https://www.instagram.com/sv.francishak
 ---
