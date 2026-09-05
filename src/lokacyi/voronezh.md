@@ -1,12 +1,12 @@
 ---
 layout: lokacyia.njk
-title: "Варонеж"
+title: Варонеж
 order: 7
-image: "/images/uploads/lokacyi/voronezh.jpg"
-address: "вул. Красноармейская 36, 394006 г. Варонеж, Расія"
-phone: "+7 473 276 62 89"
-email: "woronkap@gmail.com"
-website: "https://voronezh.dscs.ru"
+image: /images/uploads/04-1024x683.jpg
+address: вул. Красноармейская 36, 394006 г. Варонеж, Расія
+phone: +7 473 276 62 89
+email: woronkap@gmail.com
+website: https://voronezh.dscs.ru
 permalink: /voronezh/
 ---
 Каталіцкая супольнасць у Варонежы мае даўнюю гісторыю: першыя згадкі пра каталікоў у горадзе адносяцца яшчэ да XVII стагоддзя, а ў 1847 годзе тут была створана афіцыйная парафія. Пабудаваны ў 1889–1893 гадах неаготычны касцёл Найсвяцейшай Дзевы Марыі Заступніцы дзейнічаў да 1930-х, пакуль не быў закрыты савецкай уладай, а ў 1962 годзе — узарваны.
