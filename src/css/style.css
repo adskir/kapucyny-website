@@ -335,6 +335,15 @@ section { padding: 72px 0; }
 /* ── ARTICLE / RICH TEXT ── */
 .article { max-width: var(--container-narrow); margin: 0 auto; padding: 0 24px; }
 .article img { margin: 32px 0; }
+.loc-hero { margin: 32px 0; }
+.loc-hero picture, .loc-hero img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  margin: 0;
+}
 .article h2 { font-family: var(--font-display); font-size: 1.4rem; color: var(--brown-deep); margin: 36px 0 14px; }
 .article h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--brown-mid); margin: 26px 0 10px; }
 .article p { margin-bottom: 18px; }
