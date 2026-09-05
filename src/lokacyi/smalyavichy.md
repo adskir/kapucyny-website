@@ -1,16 +1,16 @@
 ---
+facebook: https://www.facebook.com/share/g/1Hu3cyGarh/
 layout: lokacyia.njk
-title: "Смалявічы"
+title: Смалявічы
 order: 5
-image: "/images/uploads/lokacyi/smalyavichy.jpg"
-address: "вул. Слабадзкая 32, 222201 г. Смалявічы, Мінская вобл."
-correspondence_address: "вул. Камсамольская д. 3А, кв. 15"
-phone: "(8-01776) 2-23-39"
-facebook: "https://www.facebook.com/share/g/1Hu3cyGarh/"
+image: /images/uploads/smalawicze.jpg.jpeg
+address: вул. Слабадзкая 32, 222201 г. Смалявічы, Мінская вобл.
+correspondence_address: вул. Камсамольская д. 3А, кв. 15
+phone: (8-01776) 2-23-39
 services:
-  - label: "Нядзеля"
-    time: "9.30 (сума), 15.30 (з дзецьмі)"
-  - label: "Будні"
+  - label: Нядзеля
+    time: 9.30 (сума), 15.30 (з дзецьмі)
+  - label: Будні
     time: "18.00"
 permalink: /smalyavichy/
 ---
