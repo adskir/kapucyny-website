@@ -26,4 +26,4 @@ steps:
 
 **Хочаш даведацца больш?** Звяжыся з намі — мы з радасцю адкажам на твае пытанні і дапаможам зрабіць першы крок.
 
-Email: [belarus.ofmcap@gmail.com](mailto:belarus.ofmcap@gmail.com)
+Email: [sc.cap.by@gmail.com](mailto:sc.cap.by@gmail.com)
