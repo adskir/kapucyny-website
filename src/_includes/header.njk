@@ -15,10 +15,10 @@
       <li class="nav-item"><a class="nav-link" href="/svyaty-francishak/">Святы Францішак</a></li>
       <li class="nav-item"><a class="nav-link" href="/braty-kapucyny/">Браты Капуцыны</a></li>
 
-            <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="/prysutnasc-kapucynau/">Прысутнасць капуцынаў</a>
+        <button class="nav-caret" aria-label="Разгарнуць спіс">▾</button>
         <div class="nav-dropdown">
-          <a href="/prysutnasc-kapucynau/" class="nav-dropdown-overview">Прысутнасць капуцынаў (агулам)</a>
           {% for loc in collections.lokacyi %}
             <a href="{{ loc.url }}">{{ loc.data.title }}</a>
           {% endfor %}
@@ -27,14 +27,15 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/byc-kapucynam/">Быць капуцынам</a>
+        <button class="nav-caret" aria-label="Разгарнуць спіс">▾</button>
         <div class="nav-dropdown">
-          <a href="/byc-kapucynam/" class="nav-dropdown-overview">Быць капуцынам (агулам)</a>
           <a href="/byc-kapucynam/yak-stac-kapucynam/">Як стаць капуцынам</a>
         </div>
       </li>
 
       <li class="nav-item">
         <span class="nav-link nav-link--parent">Рэсурсы</span>
+        <button class="nav-caret" aria-label="Разгарнуць спіс">▾</button>
         <div class="nav-dropdown">
           <a href="/bibliyateka/">Бібліятэка</a>
           <a href="/naviny/">Навіны</a>
