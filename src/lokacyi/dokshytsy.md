@@ -1,12 +1,12 @@
 ---
 layout: lokacyia.njk
-title: "Докшыцы"
+title: Докшыцы
 order: 3
-image: "/images/uploads/lokacyi/dokshytsy.jpg"
-address: "вул. Пушкіна 46А, 211720 г. Докшыцы, Віцебская вобл."
-phone: "(8-02157) 5-62-18"
-instagram: "https://www.instagram.com/sv.troitsa_"
+image: /images/uploads/2.jpg.jpeg
+address: вул. Пушкіна 46А, 211720 г. Докшыцы, Віцебская вобл.
+phone: (8-02157) 5-62-18
 permalink: /dokshytsy/
+instagram: https://www.instagram.com/sv.troitsa_
 ---
 Супольнасць капуцынаў у Докшыцах дзейнічае ў парафіі Найсвяцейшай Тройцы. Гэта адна з найстарэйшых капуцынскіх супольнасцей у Беларусі.
 
