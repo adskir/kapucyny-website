@@ -1,7 +1,7 @@
 ---
 layout: article.njk
-title: "Браты Капуцыны"
-image: "/images/uploads/braty-kapucyny.jpg"
+title: Браты Капуцыны
+image: /images/uploads/img_9865-1.jpg.jpeg
 permalink: /braty-kapucyny/
 back_link: false
 ---
