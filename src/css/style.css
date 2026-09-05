@@ -405,17 +405,40 @@ section { padding: 72px 0; }
 
 /* ── FOOTER ── */
 .site-footer { background: var(--brown-deep); color: #c9a89966; }
-.footer-top { padding: 48px 0 24px; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
-.footer-col h4 { font-family: var(--font-display); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
-.footer-col a { display: block; color: #e8d9b8aa; text-decoration: none; font-size: 14px; margin-bottom: 8px; }
-.footer-col a:hover { color: var(--gold-light); }
-.footer-social { display: flex; gap: 14px; margin-top: 10px; }
-.footer-social a { font-size: 20px; }
+.footer-top {
+  padding: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 24px 32px;
+}
+.footer-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 16px;
+}
+.footer-contact-item { color: #e8d9b8cc; text-decoration: none; font-size: 14.5px; }
+a.footer-contact-item:hover { color: var(--gold-light); }
+.footer-address { color: #e8d9b8aa; }
+.footer-sep { width: 4px; height: 4px; border-radius: 50%; background: #c9a84c55; display: inline-block; }
+.footer-social { display: flex; gap: 12px; align-items: center; }
+.footer-social a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid #c9a84c44;
+  border-radius: 50%;
+  color: #e8d9b8cc;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.footer-social a:hover { color: var(--brown-deep); background: var(--gold-light); border-color: var(--gold-light); }
 
 @media (max-width: 640px) {
-  .footer-top { flex-direction: column; gap: 28px; padding: 40px 0 20px; }
-  .footer-col { min-width: 0; text-align: center; }
-  .footer-social { justify-content: center; }
+  .footer-top { flex-direction: column; gap: 20px; padding: 36px 0 20px; }
+  .footer-contacts { flex-direction: column; gap: 8px; }
+  .footer-sep { display: none; }
   .footer-bottom { font-size: 9.5px; line-height: 1.6; padding: 20px 16px; }
 }
 .footer-bottom {
@@ -429,21 +452,6 @@ section { padding: 72px 0; }
   color: #c9a84c99;
 }
 .footer-bottom .tau { width: 34px; height: auto; display: block; margin: 0 auto 12px; opacity: 0.75; }
-
-/* ── WHATSAPP FLOAT BUTTON ── */
-.wa-float {
-  position: fixed;
-  bottom: 24px; right: 24px;
-  background: #25D366;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  z-index: 200;
-  text-decoration: none;
-  font-size: 28px;
-}
-
 /* ── FORM ── */
 .field { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
 .field label { font-size: 13px; letter-spacing: 0.04em; color: var(--brown-mid); }
