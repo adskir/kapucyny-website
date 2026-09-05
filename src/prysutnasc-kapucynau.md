@@ -1,7 +1,7 @@
 ---
 layout: article.njk
-title: "Прысутнасць капуцынаў"
-image: "/images/uploads/kapucyny-у-belarusi.jpg"
+title: Прысутнасць капуцынаў
+image: /images/uploads/img_9290.jpeg
 permalink: /prysutnasc-kapucynau/
 back_link: false
 ---
