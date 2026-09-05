@@ -14,16 +14,15 @@ if (navToggle && navList) {
   navToggle.addEventListener('click', () => navList.classList.toggle('open'));
 }
 
-// Dropdown tap-to-open on mobile
+// Dropdown tap-to-open on mobile: the caret button toggles the submenu,
+// the link itself always navigates normally (both on mobile and desktop) —
+// keeps behavior predictable instead of overloading one tap target with two jobs.
 document.querySelectorAll('.nav-item').forEach(item => {
-  const link = item.querySelector(':scope > .nav-link');
-  const dropdown = item.querySelector('.nav-dropdown');
-  if (!dropdown) return;
-  link.addEventListener('click', (e) => {
-    if (window.innerWidth <= 900) {
-      e.preventDefault();
-      item.classList.toggle('open');
-    }
+  const caret = item.querySelector('.nav-caret');
+  if (!caret) return;
+  caret.addEventListener('click', (e) => {
+    e.preventDefault();
+    item.classList.toggle('open');
   });
 });
 
