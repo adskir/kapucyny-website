@@ -30,6 +30,7 @@ collections:
               - { label: "Google Maps embed URL", name: "map_embed_url", widget: "string", required: false, hint: "Устаў iframe src з Google Maps" }
           - { label: "Спасылка WhatsApp-групы", name: "whatsapp_url", widget: "string", required: false }
           - { label: "Facebook", name: "facebook_url", widget: "string", required: false }
+                    - { label: "Instagram", name: "instagram_url", widget: "string", required: false }
           - { label: "YouTube", name: "youtube_url", widget: "string", required: false }
           - { label: "Уключыць пажертвы", name: "donate_enabled", widget: "boolean", default: false }
           - { label: "Спасылка на пажертвы", name: "donate_url", widget: "string", required: false }
