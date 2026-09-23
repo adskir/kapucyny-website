@@ -20,9 +20,21 @@ if (navToggle && navList) {
 document.querySelectorAll('.nav-item').forEach(item => {
   const caret = item.querySelector('.nav-caret');
   if (!caret) return;
+  caret.setAttribute('aria-expanded', 'false');
   caret.addEventListener('click', (e) => {
     e.preventDefault();
-    item.classList.toggle('open');
+    const willOpen = !item.classList.contains('open');
+    // close any other open submenu so only one is expanded at a time
+    document.querySelectorAll('.nav-item.open').forEach(other => {
+      if (other !== item) {
+        other.classList.remove('open');
+        const c = other.querySelector('.nav-caret');
+        if (c) c.setAttribute('aria-expanded', 'false');
+      }
+    });
+    item.classList.toggle('open', willOpen);
+    caret.setAttribute('aria-expanded', String(willOpen));
+    caret.blur();
   });
 });
 

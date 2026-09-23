@@ -4,8 +4,8 @@ layout: lokacyia.njk
 title: Смалявічы
 order: 5
 image: /images/uploads/img_2029.jpg.jpeg
-address: вул. Слабадзкая 32, 222201 г. Смалявічы, Мінская вобл.
-correspondence_address: вул. Камсамольская д. 3А, кв. 15
+address: вул. Падлесная 12, 222201 г. Смалявічы, Мінская вобл.
+correspondence_address: вул. Слабадзкая 32, 222201 г. Смалявічы, Мінская вобл.
 phone: (8-01776) 2-23-39
 services:
   - label: Нядзеля

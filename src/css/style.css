@@ -93,7 +93,9 @@ section { padding: 72px 0; }
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
   z-index: 10;
 }
-.nav-item:hover .nav-dropdown { display: block; }
+@media (min-width: 901px) and (hover: hover) {
+  .nav-item:hover .nav-dropdown { display: block; }
+}
 .nav-dropdown a {
   display: block;
   padding: 12px 18px;
@@ -139,6 +141,8 @@ section { padding: 72px 0; }
   .nav-caret { display: block; }
   .nav-dropdown { position: static; display: none; width: 100%; order: 3; }
   .nav-item.open .nav-dropdown { display: block; }
+  .nav-caret { transition: transform .2s ease; }
+  .nav-item.open .nav-caret { transform: rotate(180deg); }
 }
 
 /* ── HERO (внутренние страницы) ── */
