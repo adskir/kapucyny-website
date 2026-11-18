@@ -70,7 +70,7 @@ collections:
       - { label: "Тэлефон", name: "phone", widget: "string", required: false }
       - { label: "E-mail", name: "email", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Сайт прыхода", name: "website", widget: "string", required: false }
+      - { label: "Парафіяльны сайт", name: "website", widget: "string", required: false }
       - label: "Расклад набажэнстваў"
         name: "services"
         widget: "list"
