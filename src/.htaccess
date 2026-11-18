@@ -7,13 +7,6 @@ ErrorDocument 404 /404.html
 
 RewriteEngine On
 
-# ── 0. Адзіны адрас сайта: https://kapucyny.by (без www, толькі https) ──
-# Папка .well-known патрэбна для аўтаматычнага падаўжэння SSL — яе не чапаем.
-RewriteCond %{REQUEST_URI} !^/\.well-known/
-RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://kapucyny.by/$1 [R=301,L]
-
 # ── 1. Старонкі (page_id / p) → адпаведныя старонкі новага сайта ──
 RewriteCond %{QUERY_STRING} (^|&)(page_id|p)=(15|56|95|413|415|417|684|688|690)(&|$)
 RewriteRule ^(index\.php/?)?$ /svyaty-francishak/? [R=301,L]
