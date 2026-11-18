@@ -46,3 +46,14 @@ jobs:
         run: |
           curl -sIL --max-redirs 5 "http://kapucyny.by/?page_id=405" | grep -iE "^(HTTP|location)"
           echo; curl -sIL --max-redirs 5 "http://kapucyny.by/minsk/" | grep -iE "^(HTTP|location|server)"
+
+      - name: Змест і прэв'ю для сацсетак / WhatsApp
+        run: |
+          echo "Маладзечна:"
+          p=$(curl -s https://kapucyny.by/maladzyechna/)
+          echo "$p" | grep -o '<dt>[^<]*сайт</dt>' | head -2
+          echo "$p" | grep -o 'href="https://sacris.by/"' | sort | uniq -c
+          echo; echo "Open Graph галоўнай:"
+          curl -s https://kapucyny.by/ | grep -oE '<meta (property|name)="(og|twitter):[^"]*" content="[^"]*"'
+          echo; echo "Выява прэв'ю:"
+          curl -sI https://kapucyny.by/images/og-default.jpg | grep -iE "^(HTTP|content-type|content-length)"
