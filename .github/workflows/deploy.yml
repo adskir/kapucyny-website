@@ -5,6 +5,10 @@ name: Deploy to hoster.by
 on:
   push:
     branches: [main]
+  # Начная страхоўка: калі ўдзень выкладка не прайшла, сайт уначы сам «дагоніць» усе праўкі з GitHub.
+  # 02:17 UTC = 05:17 па Мінску.
+  schedule:
+    - cron: "17 2 * * *"
   workflow_dispatch:
     inputs:
       attempt:
@@ -15,6 +19,7 @@ on:
 permissions:
   contents: read
   actions: write   # каб перазапусціць сябе на новай машыне, калі хостынг не пусціў
+  issues: write    # каб паведаміць адміністратару, калі не атрымалася зусім
 
 concurrency:
   group: deploy-hoster
@@ -74,19 +79,43 @@ jobs:
           server-dir: ./
 
       # hoster.by часам блакуе FTP з канкрэтнага IP машыны GitHub — паўтор з той жа машыны не дапамагае.
-      # Тады запускаем дэплой нанова (новая машына = новы IP), да 3 разоў, без ліста пра памылку.
-      # Ліст прыйдзе, толькі калі не атрымалася і з трэцяй машыны.
-      - name: Перазапуск на новай машыне
+      # Тады запускаем дэплой нанова (новая машына = новы IP), да 3 разоў. Ніякіх лістоў пра памылку.
+      # Калі не атрымалася і з трэцяй машыны — ствараем Issue з пазнакай адміністратара (ліст прыходзіць яму,
+      # а не браце, які захаваў праўку ў адмінцы). Праўкі пры гэтым не губляюцца: яны ўжо ў GitHub
+      # і трапяць на сайт пры наступнай удалай выкладцы (у тым ліку начной).
+      - name: Перазапуск на новай машыне / паведамленне адміністратару
         if: steps.upload1.outcome == 'failure' && steps.upload2.outcome == 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
           ATTEMPT: ${{ inputs.attempt || '1' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           if [ "$ATTEMPT" -lt 3 ]; then
             next=$((ATTEMPT + 1))
             echo "Хостынг не пусціў гэтую машыну. Запускаю спробу $next на новай машыне."
             gh workflow run deploy.yml -R "$GITHUB_REPOSITORY" --ref main -f attempt=$next
-          else
-            echo "::error::Хостынг hoster.by не пусціў па FTP тры розныя машыны запар. Трэба праверыць хостынг."
-            exit 1
+            exit 0
           fi
+          title="Сайт не выкладзены: hoster.by не пускае FTP"
+          body="Тры розныя машыны GitHub запар не змаглі падключыцца па FTP да hoster.by.
+          Праўкі захаваны ў GitHub і з'явяцца на сайце пры наступнай удалай выкладцы (у тым ліку начной у 05:17).
+          Калі паўтараецца — праверыць хостынг / FTP-карыстальніка h118307_github.
+
+          Запуск: $RUN_URL
+          @${{ github.repository_owner }}"
+          existing=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number -q '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" -R "$GITHUB_REPOSITORY" --body "Зноў не атрымалася: $RUN_URL"
+          else
+            gh issue create -R "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
+          echo "::warning::Выкладка не прайшла з трох машын — створана паведамленне (Issue)."
+
+      # Калі выкладка ўрэшце прайшла — закрываем адкрытае паведамленне пра збой (калі было)
+      - name: Закрыць паведамленне пра збой
+        if: steps.upload1.outcome == 'success' || steps.upload2.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          n=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search 'in:title "Сайт не выкладзены"' --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue close "$n" -R "$GITHUB_REPOSITORY" --comment "Выкладка прайшла, сайт абноўлены."; fi
