@@ -73,5 +73,10 @@ RewriteRule ^(index\.php/?)?$ https://kapucyny.by/naviny/? [R=301,L]
 RewriteCond %{QUERY_STRING} (^|&)(page_id|topic|forum|reply|topic-tag|view|attachment_id|s|author|bbp_search|action)=
 RewriteRule ^(index\.php/?)?$ https://kapucyny.by/? [R=301,L]
 
-# ── 5. Службовыя адрасы WordPress → галоўная ──
+# ── 5. Старыя асобныя HTML-старонкі (2014) ──
+RewriteRule ^molodechno\.html$ https://kapucyny.by/maladzyechna/? [R=301,L]
+RewriteRule ^linki\.html$ https://kapucyny.by/spasylki/? [R=301,L]
+RewriteRule ^(index1\.html|index1\.php|index\.html_)$ https://kapucyny.by/? [R=301,L]
+
+# ── 6. Службовыя адрасы WordPress → галоўная ──
 RewriteRule ^(wp-login\.php|wp-admin/?|index\.php/?)$ https://kapucyny.by/? [R=301,L]

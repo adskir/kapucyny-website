@@ -36,6 +36,11 @@ jobs:
           check "https://kapucyny.by/?page_id=9999"
           check "https://kapucyny.by/wp-login.php"
           check "https://kapucyny.by/index.php"
+          check "https://kapucyny.by/molodechno.html"
+          check "https://kapucyny.by/linki.html"
+          check "https://kapucyny.by/index1.html"
+          check "https://kapucyny.by/kapucyny_kapucynyby.sql.gz"
+          check "https://kapucyny.by/wp-content/uploads/"
 
       - name: Поўны ланцужок для старога http-адраса
         run: |
