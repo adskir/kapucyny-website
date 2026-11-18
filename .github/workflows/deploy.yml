@@ -32,8 +32,8 @@ jobs:
 
       - run: npx @11ty/eleventy
 
-      # ПРОБНЫ ДЭПЛОЙ: пакуль заліваем у падпапку _new/, стары сайт не чапаем.
-      # Пасля праверкі server-dir зменіцца на ./
+      # Заліваем у корань сайта (/www/kapucyny.by — хатняя папка FTP-карыстальніка).
+      # Акцыя толькі дадае/абнаўляе файлы і НЕ выдаляе чужыя (напр. .well-known для SSL).
       # Хостынг часам не адказвае на першае падключэнне (ETIMEDOUT) — тады чакаем хвіліну і спрабуем яшчэ раз
       - name: Upload (спроба 1)
         id: upload1
@@ -45,7 +45,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./_site/
-          server-dir: ./_new/
+          server-dir: ./
 
       - name: Пауза перад паўторнай спробай
         if: steps.upload1.outcome == 'failure'
@@ -60,4 +60,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./_site/
-          server-dir: ./_new/
+          server-dir: ./

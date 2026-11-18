@@ -1,0 +1,41 @@
+# Праверка сайта і рэдырэктаў са старых адрасоў (запуск уручную: Actions → Check site → Run workflow)
+name: Check site
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Галоўная і асноўныя старонкі
+        run: |
+          for u in / /minsk/ /naviny/ /kantakty/ /sitemap.xml /robots.txt /404-test-neisnuje/; do
+            printf "%-28s %s\n" "$u" "$(curl -s -o /dev/null -w '%{http_code}' "https://kapucyny.by$u")"
+          done
+          echo; echo "Загаловак галоўнай:"; curl -s https://kapucyny.by/ | grep -o '<title>[^<]*' | head -1
+
+      - name: Рэдырэкты (стары адрас → новы)
+        run: |
+          check() {
+            r=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$1")
+            printf "%-50s %s\n" "$1" "$r"
+          }
+          check "http://kapucyny.by/"
+          check "https://www.kapucyny.by/"
+          check "https://kapucyny.by/?page_id=405"
+          check "https://kapucyny.by/index.php/?page_id=405"
+          check "https://kapucyny.by/?page_id=1692"
+          check "https://kapucyny.by/?page_id=15"
+          check "https://kapucyny.by/?page_id=317"
+          check "https://kapucyny.by/?page_id=2329"
+          check "https://kapucyny.by/?p=5164"
+          check "https://kapucyny.by/?p=4061"
+          check "https://kapucyny.by/?cat=4"
+          check "https://kapucyny.by/?topic=test"
+          check "https://kapucyny.by/?page_id=9999"
+          check "https://kapucyny.by/wp-login.php"
+          check "https://kapucyny.by/index.php"
+
+      - name: Поўны ланцужок для старога http-адраса
+        run: curl -sIL "http://kapucyny.by/?page_id=405" | grep -iE "^(HTTP|location)"
