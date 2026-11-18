@@ -24,6 +24,7 @@ permalink: /spasylki/
 - Каталіцкія навіны Беларусі — [catholicnews.by](https://catholicnews.by)
 - Гродзенская дыяцэзія — [grodnensis.by](https://grodnensis.by)
 - Парафія св. Казіміра ў Маладзечне — [pio.by](https://pio.by)
+- Майстэрня літургічнага адзення «Sacris Vestibus» пры парафіі ў Маладзечне — [sacris.by](https://sacris.by/)
 
 ## СМІ і рухі
 
