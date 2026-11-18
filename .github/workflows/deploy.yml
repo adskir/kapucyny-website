@@ -1,0 +1,44 @@
+# Збірка сайта (Eleventy) і загрузка на хостынг hoster.by па FTPS.
+# Запускаецца пры кожным push у main, а таксама ўручную (Actions → Run workflow).
+name: Deploy to hoster.by
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hoster
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Кэш аптымізаваных выяў, каб не пералічваць іх пры кожнай зборцы
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: eleventy-img-${{ github.run_id }}
+          restore-keys: eleventy-img-
+
+      - run: npm install --no-audit --no-fund
+
+      - run: npx @11ty/eleventy
+
+      # ПРОБНЫ ДЭПЛОЙ: пакуль заліваем у падпапку _new/, стары сайт не чапаем.
+      # Пасля праверкі server-dir зменіцца на ./
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./_site/
+          server-dir: ./_new/
