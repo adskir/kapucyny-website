@@ -34,7 +34,26 @@ jobs:
 
       # ПРОБНЫ ДЭПЛОЙ: пакуль заліваем у падпапку _new/, стары сайт не чапаем.
       # Пасля праверкі server-dir зменіцца на ./
-      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # Хостынг часам не адказвае на першае падключэнне (ETIMEDOUT) — тады чакаем хвіліну і спрабуем яшчэ раз
+      - name: Upload (спроба 1)
+        id: upload1
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./_site/
+          server-dir: ./_new/
+
+      - name: Пауза перад паўторнай спробай
+        if: steps.upload1.outcome == 'failure'
+        run: sleep 60
+
+      - name: Upload (спроба 2)
+        if: steps.upload1.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
