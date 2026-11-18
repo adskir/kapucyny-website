@@ -6,6 +6,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      attempt:
+        description: "Нумар спробы (ставіцца аўтаматычна пры перазапуску)"
+        required: false
+        default: "1"
+
+permissions:
+  contents: read
+  actions: write   # каб перазапусціць сябе на новай машыне, калі хостынг не пусціў
 
 concurrency:
   group: deploy-hoster
@@ -52,7 +61,9 @@ jobs:
         run: sleep 60
 
       - name: Upload (спроба 2)
+        id: upload2
         if: steps.upload1.outcome == 'failure'
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -61,3 +72,21 @@ jobs:
           protocol: ftps
           local-dir: ./_site/
           server-dir: ./
+
+      # hoster.by часам блакуе FTP з канкрэтнага IP машыны GitHub — паўтор з той жа машыны не дапамагае.
+      # Тады запускаем дэплой нанова (новая машына = новы IP), да 3 разоў, без ліста пра памылку.
+      # Ліст прыйдзе, толькі калі не атрымалася і з трэцяй машыны.
+      - name: Перазапуск на новай машыне
+        if: steps.upload1.outcome == 'failure' && steps.upload2.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ATTEMPT: ${{ inputs.attempt || '1' }}
+        run: |
+          if [ "$ATTEMPT" -lt 3 ]; then
+            next=$((ATTEMPT + 1))
+            echo "Хостынг не пусціў гэтую машыну. Запускаю спробу $next на новай машыне."
+            gh workflow run deploy.yml -R "$GITHUB_REPOSITORY" --ref main -f attempt=$next
+          else
+            echo "::error::Хостынг hoster.by не пусціў па FTP тры розныя машыны запар. Трэба праверыць хостынг."
+            exit 1
+          fi
