@@ -38,4 +38,6 @@ jobs:
           check "https://kapucyny.by/index.php"
 
       - name: Поўны ланцужок для старога http-адраса
-        run: curl -sIL "http://kapucyny.by/?page_id=405" | grep -iE "^(HTTP|location)"
+        run: |
+          curl -sIL --max-redirs 5 "http://kapucyny.by/?page_id=405" | grep -iE "^(HTTP|location)"
+          echo; curl -sIL --max-redirs 5 "http://kapucyny.by/minsk/" | grep -iE "^(HTTP|location|server)"
