@@ -63,6 +63,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("src/_redirects");
+  eleventyConfig.addPassthroughCopy("src/.htaccess"); // рэдырэкты для hoster.by (Apache/LiteSpeed)
 
   eleventyConfig.addCollection("lokacyi", (api) =>
     api.getFilteredByGlob("src/lokacyi/*.md").sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
