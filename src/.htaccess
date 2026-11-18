@@ -14,6 +14,10 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTP:X-Forwarded-Proto} =http [NC]
 RewriteRule ^(.*)$ https://kapucyny.by/$1 [R=301,L]
 
+# www.kapucyny.by → kapucyny.by (бяспечна: мэта на іншым хасце, цыкла не будзе)
+RewriteCond %{HTTP_HOST} ^www\.kapucyny\.by$ [NC]
+RewriteRule ^(.*)$ https://kapucyny.by/$1 [R=301,L]
+
 # ── 1. Старонкі (page_id / p) → адпаведныя старонкі новага сайта ──
 RewriteCond %{QUERY_STRING} (^|&)(page_id|p)=(15|56|95|413|415|417|684|688|690)(&|$)
 RewriteRule ^(index\.php/?)?$ https://kapucyny.by/svyaty-francishak/? [R=301,L]
