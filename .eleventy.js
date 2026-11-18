@@ -85,6 +85,35 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
+  // ── SEO ──
+  // Кароткае апісанне са зместу старонкі (калі няма поля description): без HTML, да ~155 сімвалаў па мяжы слова
+  eleventyConfig.addFilter("seoExcerpt", (html, max = 155) => {
+    if (!html) return "";
+    let text = String(html)
+      // без загалоўкаў, «хлебных крошак» і шапкі старонкі — толькі асноўны тэкст
+      .replace(/<section class="page-hero"[\s\S]*?<\/section>/gi, " ")
+      .replace(/<(script|style|form|h1|h2|h3|nav|figcaption)[^>]*>[\s\S]*?<\/\1>/gi, " ")
+      .replace(/<div class="breadcrumb">[\s\S]*?<\/div>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (text.length <= max) return text;
+    let cut = text.slice(0, max);
+    const lastSpace = cut.lastIndexOf(" ");
+    if (lastSpace > max * 0.6) cut = cut.slice(0, lastSpace);
+    return cut.replace(/[\s,.;:—–-]+$/, "") + "…";
+  });
+
+  // Абсалютны адрас для canonical, Open Graph і sitemap
+  eleventyConfig.addFilter("absUrl", (url, base) => {
+    if (!url) return "";
+    if (/^https?:\/\//.test(url)) return url;
+    return String(base).replace(/\/$/, "") + (url.startsWith("/") ? url : "/" + url);
+  });
+
+  eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
+
   return {
     dir: {
       input: "src",

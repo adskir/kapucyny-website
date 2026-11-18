@@ -1,0 +1,9 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+Disallow: /admin/
+Disallow: /netlify-forms/
+
+Sitemap: {{ "/sitemap.xml" | absUrl(settings.site_url) }}

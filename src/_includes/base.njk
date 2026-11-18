@@ -3,8 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if title %}{{ title }} — {% endif %}{{ settings.site_title }}</title>
-<meta name="description" content="{{ description or settings.site_tagline }}">
+{%- set seoTitle = (title + " — " + settings.site_title) if (title and page.url != "/") else (settings.site_title + " — " + settings.site_tagline) -%}
+{%- set seoDesc = description or excerpt or (content | seoExcerpt) or settings.site_tagline -%}
+{%- set seoUrl = page.url | absUrl(settings.site_url) -%}
+{%- set seoImage = (image or settings.og_image) | absUrl(settings.site_url) -%}
+<title>{{ seoTitle }}</title>
+<meta name="description" content="{{ seoDesc }}">
+{%- if noindex %}
+<meta name="robots" content="noindex, follow">
+{%- else %}
+<link rel="canonical" href="{{ seoUrl }}">
+{%- endif %}
+<meta property="og:site_name" content="{{ settings.site_title }}">
+<meta property="og:locale" content="be_BY">
+<meta property="og:type" content="{{ 'article' if layout == 'novasc.njk' else 'website' }}">
+<meta property="og:title" content="{{ title if (title and page.url != '/') else settings.site_title }}">
+<meta property="og:description" content="{{ seoDesc }}">
+<meta property="og:url" content="{{ seoUrl }}">
+<meta property="og:image" content="{{ seoImage }}">
+<meta name="twitter:card" content="summary_large_image">
+{%- if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ settings.curia.name | dump | safe }},
+  "alternateName": {{ settings.site_title | dump | safe }},
+  "url": {{ settings.site_url | dump | safe }},
+  "logo": {{ "/images/og-default.jpg" | absUrl(settings.site_url) | dump | safe }},
+  "email": {{ settings.curia.email | dump | safe }},
+  "telephone": {{ settings.curia.phone | dump | safe }},
+  "address": { "@type": "PostalAddress", "streetAddress": {{ settings.curia.address | dump | safe }}, "addressCountry": "BY" }
+  {%- set social = [settings.instagram_url, settings.facebook_url, settings.youtube_url] | select | list -%}
+  {%- if social.length %},
+  "sameAs": {{ social | dump | safe }}
+  {%- endif %}
+}
+</script>
+{%- endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">

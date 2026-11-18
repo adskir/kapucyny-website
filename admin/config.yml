@@ -19,6 +19,8 @@ collections:
         fields:
           - { label: "Назва сайта", name: "site_title", widget: "string" }
           - { label: "Тэглайн", name: "site_tagline", widget: "string" }
+          - { label: "Адрас сайта", name: "site_url", widget: "hidden", default: "https://kapucyny.by" }
+          - { label: "Выява для спасылак у сацсетках (1200×630)", name: "og_image", widget: "image", required: false, hint: "Паказваецца пры адпраўцы спасылкі на сайт у месенджары і сацсеткі." }
           - label: "Курыя (галоўныя кантакты)"
             name: "curia"
             widget: "object"
@@ -59,6 +61,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Назва горада", name: "title", widget: "string" }
+      - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
       - { label: "Парадак у меню", name: "order", widget: "number", default: 1 }
       - { label: "Фота", name: "image", widget: "image", required: false }
       - { label: "Тэкст", name: "body", widget: "markdown" }
@@ -85,6 +88,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Загаловак", name: "title", widget: "string" }
+      - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
       - { label: "Дата", name: "date", widget: "datetime" }
       - { label: "Фота", name: "image", widget: "image", required: false }
       - { label: "Кароткі анонс", name: "excerpt", widget: "text" }
@@ -99,6 +103,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Загаловак", name: "title", widget: "string" }
+      - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
       - label: "Катэгорыя"
         name: "category"
         widget: "select"
@@ -119,6 +124,7 @@ collections:
         file: "src/svyaty-francishak.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Фота", name: "image", widget: "image", required: false }
           - { label: "Тэкст", name: "body", widget: "markdown" }
 
@@ -127,6 +133,7 @@ collections:
         file: "src/braty-kapucyny.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Фота", name: "image", widget: "image", required: false }
           - { label: "Тэкст", name: "body", widget: "markdown" }
 
@@ -135,6 +142,7 @@ collections:
         file: "src/prysutnasc-kapucynau.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Фота", name: "image", widget: "image", required: false }
           - { label: "Тэкст", name: "body", widget: "markdown" }
 
@@ -143,6 +151,7 @@ collections:
         file: "src/blaslauleny-ganarat-kazminski.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Фота", name: "image", widget: "image", required: false }
           - { label: "Тэкст", name: "body", widget: "markdown" }
 
@@ -151,6 +160,7 @@ collections:
         file: "src/byc-kapucynam.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Фота", name: "image", widget: "image", required: false }
           - { label: "Уступны тэкст", name: "body", widget: "markdown" }
           - label: "Цытаты св. Францішка"
@@ -165,6 +175,7 @@ collections:
         file: "src/yak-stac-kapucynam.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Уступны тэкст", name: "body", widget: "markdown" }
           - label: "Этапы"
             name: "steps"
@@ -179,6 +190,7 @@ collections:
         file: "src/spasylki.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Тэкст са спасылкамі", name: "body", widget: "markdown" }
 
       - name: "galereya"
@@ -186,6 +198,7 @@ collections:
         file: "src/galereya.md"
         fields:
           - { label: "Загаловак", name: "title", widget: "string" }
+          - { label: "Апісанне для Google (неабавязкова)", name: "description", widget: "text", required: false, hint: "1–2 сказы (да 155 сімвалаў): пра што гэтая старонка. Паказваецца ў выніках пошуку і пры адпраўцы спасылкі. Калі пуста — бярэцца пачатак тэксту." }
           - { label: "Тэкст", name: "body", widget: "markdown" }
           - label: "Фотаздымкі"
             name: "photos"
